@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Star accent -->
+    <path
+        android:fillColor="#FFB86B"
+        android:pathData="M73,30m-2.2,0a2.2,2.2 0 1,0 4.4,0a2.2,2.2 0 1,0 -4.4,0" />
+    <!-- Crescent Moon -->
+    <path
+        android:fillColor="#F5EEDC"
+        android:pathData="M52.6,26.06 A16,16 0 1,0 68.9,47.81 A13.6,13.6 0 1,1 52.6,26.06 Z" />
+    <!-- Sound Waves -->
+    <path
+        android:strokeColor="#F5EEDC"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M32,66 q5.5,-4 11,0 t11,0 t11,0 t11,0" />
+    <path
+        android:strokeColor="#CCF5EEDC"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M37.5,74 q5.5,-4 11,0 t11,0 t11,0" />
+    <path
+        android:strokeColor="#80F5EEDC"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M43,82 q5.5,-4 11,0 t11,0" />
+</vector>

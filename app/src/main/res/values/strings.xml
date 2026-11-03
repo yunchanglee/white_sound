@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">쉼</string>
+    <string name="app_subtitle">잠들 때, 집중할 때, 공부할 때</string>
+    <string name="channel_playback_name">미디어 재생</string>
+    <string name="channel_playback_desc">화이트 노이즈 및 수면 사운드 재생 알림</string>
+    <string name="action_play">재생</string>
+    <string name="action_pause">일시정지</string>
+    <string name="action_extend_15">+15분</string>
+    <string name="action_stop">종료</string>
+</resources>

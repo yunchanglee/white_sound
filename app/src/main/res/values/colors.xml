@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Hush Dark First Palette -->
+    <color name="bg_dark">#0E1126</color>
+    <color name="surface_dark">#171B36</color>
+    <color name="surface2_dark">#22284A</color>
+    <color name="sheet_dark">#1A1F3D</color>
+    <color name="outline_dark">#2F3660</color>
+    <color name="text_primary">#EDEBF5</color>
+    <color name="text_secondary">#A3A8C7</color>
+    <color name="text_tertiary">#6E7399</color>
+    <color name="moon_primary">#F5EEDC</color>
+    <color name="moon_on_color">#1B1F3B</color>
+    <color name="amber_accent">#FFB86B</color>
+
+    <!-- Category Accent Colors -->
+    <color name="category_sleep">#9C9CFF</color>
+    <color name="category_focus">#4FD1C5</color>
+    <color name="category_study">#A8D672</color>
+
+    <!-- Notification & Launcher Colors -->
+    <color name="ic_launcher_background">#1B1F3B</color>
+</resources>

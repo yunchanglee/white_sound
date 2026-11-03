@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 백그라운드 재생 상태바/알림 small icon (재생 중). 흰색 단색 - 시스템이 틴트함 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M11.48,2.52 A6,6 0 1,0 17.59,10.68 A5.1,5.1 0 1,1 11.48,2.52 Z" />
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.9"
+        android:strokeLineCap="round"
+        android:pathData="M4,17.5 q2,-1.7 4,0 t4,0 t4,0 t4,0" />
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.9"
+        android:strokeLineCap="round"
+        android:pathData="M8,21.3 q2,-1.7 4,0 t4,0" />
+</vector>

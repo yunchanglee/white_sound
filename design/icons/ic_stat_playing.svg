@@ -1,0 +1,8 @@
+<!-- 상태바(백그라운드 재생) 알림 아이콘 - 24x24, 흰색 단색 + 투명 배경 (Android 규격) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96">
+  <path fill="#FFFFFF" d="M11.48,2.52 A6,6 0 1,0 17.59,10.68 A5.1,5.1 0 1,1 11.48,2.52 Z"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round">
+    <path d="M4,17.5 q2,-1.7 4,0 t4,0 t4,0 t4,0"/>
+    <path d="M8,21.3 q2,-1.7 4,0 t4,0"/>
+  </g>
+</svg>

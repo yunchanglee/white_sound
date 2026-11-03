@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>쉼(Hush) 아이콘 시트</title>
+<style>
+  body{margin:0;padding:40px;background:#0E1126;color:#EDEBF5;font-family:Pretendard,'Noto Sans KR','Malgun Gothic',sans-serif;width:1120px}
+  h1{font-size:28px;margin:0 0 4px} h2{font-size:18px;color:#A3A8C7;font-weight:600;margin:36px 0 16px}
+  .row{display:flex;gap:32px;align-items:flex-end;flex-wrap:wrap}
+  .cell{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;color:#A3A8C7}
+  .ic{overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .circle{border-radius:50%} .squircle{border-radius:30%} .rsq{border-radius:18%}
+  .wall{display:flex;gap:28px;padding:28px 36px;border-radius:24px;background:linear-gradient(135deg,#3a4a7a,#8a6d9e 60%,#e0a27a)}
+  .wall .cell{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+  .sb{display:flex;align-items:center;gap:10px;padding:8px 18px;border-radius:14px;font-size:14px}
+  .sb.dark{background:#000;color:#fff} .sb.light{background:#F2F2F7;color:#111}
+  .sb.light img{filter:invert(1)}
+  .note{font-size:13px;color:#A3A8C7;line-height:1.6;margin-top:8px}
+  .box{border:1px dashed #4a5080;border-radius:12px;padding:16px}
+</style></head><body>
+<h1>쉼 (Hush) — 아이콘 시트</h1>
+<div class="note">런처 아이콘(Adaptive Icon) · 상태바/알림 아이콘(백그라운드 재생) · 크기별 가독성 확인</div>
+
+<h2>1. 런처 아이콘 — 기기별 마스크</h2>
+<div class="row">
+  <div class="cell"><img class="ic circle" src="app_icon.svg" width="160"><span>Circle (Pixel)</span></div>
+  <div class="cell"><img class="ic squircle" src="app_icon.svg" width="160"><span>Squircle (Samsung One UI)</span></div>
+  <div class="cell"><img class="ic rsq" src="app_icon.svg" width="160"><span>Rounded Square</span></div>
+  <div class="cell"><img class="ic" src="app_icon.svg" width="160"><span>Full bleed 108dp (원본)</span></div>
+  <div class="cell"><img class="ic circle" src="app_icon_concept.jpg" width="160"><span>AI 콘셉트 아트 (레퍼런스)</span></div>
+</div>
+
+<h2>2. 홈 화면 가독성 (실사용 크기)</h2>
+<div class="wall">
+  <div class="cell"><img class="ic squircle" src="app_icon.svg" width="64"><span>쉼</span></div>
+  <div class="cell"><img class="ic squircle" src="app_icon.svg" width="48"><span>48dp</span></div>
+  <div class="cell"><img class="ic squircle" src="app_icon.svg" width="36"><span>36dp</span></div>
+  <div class="cell"><img class="ic squircle" src="app_icon_monochrome_preview.svg" width="64"><span>테마 아이콘(A13+)</span></div>
+</div>
+
+<h2>3. 백그라운드 재생 아이콘 (상태바 / 알림 small icon, 24dp 흰색 단색)</h2>
+<div class="row">
+  <div class="cell box"><img src="ic_stat_playing.svg" width="96" style="background:#2E3A6B;border-radius:12px"><span>ic_stat_playing — 재생 중</span></div>
+  <div class="cell box"><img src="ic_stat_timer.svg" width="96" style="background:#2E3A6B;border-radius:12px"><span>ic_stat_timer — 자동 꺼짐 예약 중</span></div>
+  <div class="cell">
+    <div class="sb dark"><b>12:45</b><img src="ic_stat_playing.svg" width="18"><img src="ic_stat_timer.svg" width="18"><span style="margin-left:60px">5G ▮▮▮ 82%</span></div>
+    <div class="sb light"><b>12:45</b><img src="ic_stat_playing.svg" width="18"><img src="ic_stat_timer.svg" width="18"><span style="margin-left:60px">5G ▮▮▮ 82%</span></div>
+    <span>상태바 실제 크기 (다크 / 라이트)</span>
+  </div>
+</div>
+<div class="note">※ Android 5.0+ 알림 small icon은 알파 채널만 사용되므로 반드시 흰색 단색 + 투명 배경으로 제작. 런처 아이콘의 ‘달+물결’ 실루엣을 그대로 축약해 브랜드 연속성을 유지.</div>
+</body></html>

@@ -1,0 +1,25 @@
+<!-- Android 13+ 테마(단색) 아이콘 미리보기 - 마스터와 동일 실루엣, 시스템 색상으로 틴트됨 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="512" height="512">
+  <defs>
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="#000"/>
+      <circle cx="500" cy="510" r="285" fill="#fff"/>
+      <circle cx="606" cy="414" r="256" fill="#000"/>
+      <g fill="none" stroke="#000" stroke-width="30" stroke-linecap="round">
+        <path d="M395,572 C470,612 545,598 602,560 C662,520 730,520 800,548"/>
+        <path d="M478,650 C545,676 605,662 650,630 C695,598 745,598 800,612"/>
+        <path d="M602,694 C660,706 715,690 770,655"/>
+      </g>
+      <g fill="none" stroke="#fff" stroke-width="34" stroke-linecap="round">
+        <path d="M360,520 C440,575 525,560 582,520 C642,478 720,470 776,508"/>
+        <path d="M430,605 C505,642 572,628 622,592 C672,556 730,550 774,570"/>
+        <path d="M540,672 C595,690 640,676 675,650 C708,626 735,622 752,628"/>
+      </g>
+      <circle cx="512" cy="375" r="16" fill="#fff"/>
+    </mask>
+  </defs>
+  <rect width="108" height="108" fill="#D8E2FF"/>
+  <g transform="translate(54 54) scale(0.0844) translate(-512 -512)">
+    <rect width="1024" height="1024" fill="#1B2A5E" mask="url(#m)"/>
+  </g>
+</svg>

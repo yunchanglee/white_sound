@@ -1,0 +1,41 @@
+﻿<!-- 쉼(Hush) 앱 아이콘 - 마스터 벡터 (108x108, Android Adaptive Icon 기준 / 안전영역: 중심 r=33)
+     콘셉트: 초승달의 아랫부분이 세 갈래 소리 물결로 풀려 나가는 형태 + 앰버 별 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B1F3B"/>
+      <stop offset="1" stop-color="#2E3A6B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F5EEDC" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#F5EEDC" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 1024 좌표계로 그린 뒤 108로 축소 -->
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="#000"/>
+      <!-- crescent body: outer disk minus inner disk -->
+      <circle cx="500" cy="510" r="285" fill="#fff"/>
+      <circle cx="606" cy="414" r="256" fill="#000"/>
+      <!-- gaps (cut) -->
+      <g fill="none" stroke="#000" stroke-width="30" stroke-linecap="round">
+        <path d="M395,572 C470,612 545,598 602,560 C662,520 730,520 800,548"/>
+        <path d="M478,650 C545,676 605,662 650,630 C695,598 745,598 800,612"/>
+        <path d="M602,694 C660,706 715,690 770,655"/>
+      </g>
+      <!-- waves (add) -->
+      <g fill="none" stroke="#fff" stroke-width="34" stroke-linecap="round">
+        <path d="M360,520 C440,575 525,560 582,520 C642,478 720,470 776,508"/>
+        <path d="M430,605 C505,642 572,628 622,592 C672,556 730,550 774,570"/>
+        <path d="M540,672 C595,690 640,676 675,650 C708,626 735,622 752,628"/>
+      </g>
+    </mask>
+  </defs>
+  <!-- background layer -->
+  <rect width="108" height="108" fill="url(#bg)"/>
+  <circle cx="54" cy="54" r="40" fill="url(#glow)"/>
+  <!-- foreground layer -->
+  <g transform="scale(0.10547)">
+    <rect width="1024" height="1024" fill="#F5EEDC" mask="url(#m)"/>
+    <circle cx="512" cy="375" r="16" fill="#FFB86B"/>
+  </g>
+</svg>

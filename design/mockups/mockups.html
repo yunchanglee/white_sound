@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>쉼(Hush) 디자인 시안</title>
+<style>
+:root{
+  --bg:#0E1126; --surface:#171B36; --surface2:#22284A; --outline:#2F3660;
+  --text:#EDEBF5; --text2:#A3A8C7; --text3:#6E7399;
+  --moon:#F5EEDC; --amber:#FFB86B;
+  --sleep:#9C9CFF; --focus:#4FD1C5; --study:#A8D672;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:40px;background:#07091A;color:var(--text);font-family:Pretendard,'Noto Sans KR','Malgun Gothic',sans-serif;width:1300px}
+h1{margin:0 0 6px;font-size:30px} .sub{color:var(--text2);font-size:14px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(3,360px);gap:56px 50px;justify-content:start}
+.wrap{display:flex;flex-direction:column;gap:12px}
+.label{font-size:15px;font-weight:700} .label small{display:block;color:var(--text2);font-weight:400;font-size:12px;margin-top:3px}
+.phone{position:relative;width:360px;height:760px;border-radius:40px;background:var(--bg);overflow:hidden;border:6px solid #1d2140;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.sb{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:13px;font-weight:600;color:var(--text)}
+.sb .r{display:flex;gap:6px;align-items:center}
+.sb img{width:14px;height:14px}
+.pad{padding:0 20px}
+.row{display:flex;align-items:center} .between{justify-content:space-between} .gap8{gap:8px} .gap12{gap:12px}
+.t-h1{font-size:24px;font-weight:700;line-height:1.3} .t-h2{font-size:18px;font-weight:700}
+.t-b{font-size:14px;color:var(--text2);line-height:1.5} .t-c{font-size:12px;color:var(--text2)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:16px;background:var(--surface2);font-size:13px;color:var(--text)}
+.chip.on{background:var(--moon);color:#1B1F3B;font-weight:700}
+.btn{height:52px;border-radius:26px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.btn.primary{background:var(--moon);color:#1B1F3B} .btn.ghost{border:1px solid var(--outline);color:var(--text)}
+.ico{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card{border-radius:24px;background:var(--surface);padding:16px}
+/* sound tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{height:112px;border-radius:20px;padding:14px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.tile .ico{position:absolute;top:14px;left:14px;width:28px;height:28px;stroke:#fff;opacity:.95}
+.tile b{font-size:14px} .tile span{font-size:11px;opacity:.8}
+.tile .badge{position:absolute;top:12px;right:12px;font-size:10px;padding:3px 7px;border-radius:8px;background:rgba(0,0,0,.28)}
+.tile .dl{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:14px;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center}
+.tile .dl .ico{position:static;width:16px;height:16px}
+.g-rain{background:linear-gradient(150deg,#3B4A85,#1E2550)}
+.g-sea{background:linear-gradient(150deg,#2A5C7E,#173049)}
+.g-fire{background:linear-gradient(150deg,#A4553A,#4A2230)}
+.g-brown{background:linear-gradient(150deg,#6B5146,#2E2430)}
+.g-delta{background:linear-gradient(150deg,#5B4FA8,#25204F)}
+.g-night{background:linear-gradient(150deg,#2F5A4B,#162B2A)}
+.g-wind{background:linear-gradient(150deg,#4C6C8A,#22324A)}
+.g-water{background:linear-gradient(150deg,#2E7F86,#14383F)}
+.g-pink{background:linear-gradient(150deg,#9A5A86,#3B2342)}
+/* nav */
+.nav{position:absolute;bottom:0;left:0;right:0;height:72px;background:#12162E;border-top:1px solid #1E2344;display:flex;justify-content:space-around;align-items:center}
+.nav div{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--text3)}
+.nav .on{color:var(--moon)} .nav .on .pill{background:#2A3160}
+.nav .pill{width:56px;height:30px;border-radius:15px;display:flex;align-items:center;justify-content:center}
+/* segmented */
+.seg{display:flex;background:var(--surface);border-radius:22px;padding:4px}
+.seg div{flex:1;height:36px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text2);gap:6px}
+.seg .on{background:var(--surface2);color:var(--text);font-weight:700}
+.dot{width:8px;height:8px;border-radius:4px;display:inline-block}
+/* slider */
+.slider{height:6px;border-radius:3px;background:var(--surface2);position:relative}
+.slider i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--moon)}
+.slider b{position:absolute;top:-7px;width:20px;height:20px;border-radius:10px;background:var(--moon);box-shadow:0 0 0 4px rgba(245,238,220,.15)}
+.toggle{width:44px;height:26px;border-radius:13px;background:var(--moon);position:relative}
+.toggle::after{content:"";position:absolute;right:3px;top:3px;width:20px;height:20px;border-radius:10px;background:#1B1F3B}
+.toggle.off{background:var(--surface2)} .toggle.off::after{left:3px;right:auto;background:var(--text3)}
+.scrim{position:absolute;inset:0;background:rgba(5,6,16,.62)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#1A1F3D;border-radius:28px 28px 0 0;padding:12px 20px 24px}
+.handle{width:36px;height:4px;border-radius:2px;background:#4A5080;margin:0 auto 16px}
+</style></head><body>
+
+<!-- glyphs -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="rain" viewBox="0 0 24 24"><path d="M7 15a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17 8a3.5 3.5 0 0 1 .5 7H7z"/><path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2"/></symbol>
+  <symbol id="wave" viewBox="0 0 24 24"><path d="M2 9c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0"/><path d="M2 14c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0"/><path d="M2 19c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0"/></symbol>
+  <symbol id="fire" viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.6 1 2.6 2 3 0-3-1-5.5.5-8z"/><path d="M5 21h14"/></symbol>
+  <symbol id="noise" viewBox="0 0 24 24"><path d="M3 12h1l1-4 1.5 8 1.5-10 1.5 12 1.5-9 1.5 6 1.5-8 1.5 10 1.5-7 1 4h2"/></symbol>
+  <symbol id="sine" viewBox="0 0 24 24"><path d="M2 12c2-6 4-6 6 0s4 6 6 0 4-6 6 0"/><circle cx="21" cy="5" r="1.2"/></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3"/><path d="M3 12h16a3 3 0 1 1-3 3"/><path d="M3 16h7"/></symbol>
+  <symbol id="fall" viewBox="0 0 24 24"><path d="M4 3h16"/><path d="M7 3v12M12 3v14M17 3v12"/><path d="M3 20c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c-1 10-6 15-15 15z"/><path d="M5 19l8-8"/></symbol>
+  <symbol id="bug" viewBox="0 0 24 24"><circle cx="12" cy="13" r="4"/><path d="M12 9V6M9 7L7 4M15 7l2-3M8 13H4M20 13h-4M9 16l-3 3M15 16l3 3"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+  <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol>
+  <symbol id="timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9 2h6"/></symbol>
+  <symbol id="layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+  <symbol id="home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></symbol>
+  <symbol id="routine" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+  <symbol id="gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+  <symbol id="vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></symbol>
+  <symbol id="wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1"/></symbol>
+  <symbol id="headphone" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="2"/><rect x="17" y="14" width="4" height="7" rx="2"/></symbol>
+</svg>
+
+<h1>쉼 (Hush) — 디자인 시안 v1</h1>
+<div class="sub">다크 퍼스트 · Material 3 기반 · 360×760dp 기준 · Pretendard</div>
+
+<div class="grid">
+
+<!-- ===== 01 온보딩 / 다운로드 ===== -->
+<div class="wrap"><div class="label">01. 첫 실행 · 사운드 준비<small>내장·생성음 12종 즉시 재생 + Play Asset Delivery로 12종 추가</small></div>
+<div class="phone" style="background:radial-gradient(120% 70% at 50% 0%,#2E3A6B 0%,#0E1126 65%)">
+  <div class="sb"><span>12:45</span><span class="r">5G 82%</span></div>
+  <div style="display:flex;flex-direction:column;align-items:center;margin-top:70px">
+    <img src="../icons/app_icon.svg" width="104" style="border-radius:30%;box-shadow:0 10px 40px rgba(245,238,220,.18)">
+    <div style="font-size:34px;font-weight:800;margin-top:22px;letter-spacing:2px">쉼</div>
+    <div class="t-b" style="margin-top:6px;text-align:center">잠들 때, 집중할 때, 공부할 때<br>당신 곁에 머무는 소리</div>
+  </div>
+  <div class="pad" style="margin-top:56px">
+    <div class="card">
+      <div class="row between"><b style="font-size:15px">사운드 팩 준비 중</b><span class="t-c">27.4 / 42MB</span></div>
+      <div class="slider" style="margin:14px 0 12px"><i style="width:65%"></i></div>
+      <div class="t-c" style="line-height:1.6">✓ 기본 사운드 12종 — 지금 바로 들을 수 있어요<br>· 추가 사운드 12종 Google Play에서 받는 중 (8/12)</div>
+      <div class="row between" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--outline)">
+        <span class="row gap8" style="font-size:13px"><svg class="ico" style="width:18px;height:18px"><use href="#wifi"/></svg>Wi-Fi에서만 다운로드</span><div class="toggle"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pad" style="position:absolute;bottom:36px;left:0;right:0">
+    <div class="btn primary">지금 바로 듣기</div>
+    <div class="t-c" style="text-align:center;margin-top:12px">다운로드는 백그라운드에서 계속돼요</div>
+  </div>
+</div></div>
+
+<!-- ===== 02 홈 ===== -->
+<div class="wrap"><div class="label">02. 홈 · 이어서 듣기<small>마지막 재생 사운드/믹스 + 타이머 설정을 최상단 추천</small></div>
+<div class="phone">
+  <div class="sb"><span>23:12</span><span class="r">5G 64%</span></div>
+  <div class="pad" style="margin-top:8px">
+    <div class="t-c">좋은 밤이에요 🌙</div>
+    <div class="t-h1" style="margin-top:2px">오늘도 푹 쉬어요</div>
+  </div>
+  <div class="pad" style="margin-top:16px">
+    <div style="border-radius:24px;padding:18px;background:linear-gradient(135deg,#3B4A85 0%,#5A3F6E 100%);position:relative;overflow:hidden">
+      <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:70px;background:rgba(245,238,220,.08)"></div>
+      <div class="t-c" style="color:#D9DBF5">이어서 듣기 · 어젯밤 23:40</div>
+      <div style="font-size:19px;font-weight:700;margin-top:6px">잔잔한 빗소리 + 벽난로</div>
+      <div class="row gap8" style="margin-top:10px">
+        <span class="chip" style="background:rgba(0,0,0,.25);height:26px;font-size:12px"><span class="dot" style="background:var(--sleep)"></span>깊은 잠</span>
+        <span class="chip" style="background:rgba(0,0,0,.25);height:26px;font-size:12px"><svg class="ico" style="width:14px;height:14px"><use href="#timer"/></svg>1시간 후 꺼짐</span>
+      </div>
+      <div style="position:absolute;right:18px;bottom:18px;width:56px;height:56px;border-radius:28px;background:var(--moon);color:#1B1F3B;display:flex;align-items:center;justify-content:center"><svg class="ico" style="width:26px;height:26px"><use href="#play"/></svg></div>
+    </div>
+  </div>
+  <div class="pad" style="margin-top:20px">
+    <div class="seg"><div class="on"><span class="dot" style="background:var(--sleep)"></span>깊은 잠</div><div><span class="dot" style="background:var(--focus)"></span>집중</div><div><span class="dot" style="background:var(--study)"></span>공부</div></div>
+  </div>
+  <div class="pad" style="margin-top:14px">
+    <div class="tiles">
+      <div class="tile g-rain"><svg class="ico"><use href="#rain"/></svg><span class="badge">재생 중</span><b>잔잔한 빗소리</b><span>자연 · 내장</span></div>
+      <div class="tile g-sea"><svg class="ico"><use href="#wave"/></svg><b>밤바다 파도</b><span>자연 · 내장</span></div>
+      <div class="tile g-fire"><svg class="ico"><use href="#fire"/></svg><b>벽난로</b><span>불 · 내장</span></div>
+      <div class="tile g-brown"><svg class="ico"><use href="#noise"/></svg><b>브라운 노이즈</b><span>노이즈 · 생성음</span></div>
+      <div class="tile g-delta"><svg class="ico"><use href="#sine"/></svg><span class="dl"><svg class="ico"><use href="#headphone"/></svg></span><b>델타파 2Hz</b><span>주파수 · 이어폰 권장</span></div>
+      <div class="tile g-night"><svg class="ico"><use href="#bug"/></svg><span class="dl"><svg class="ico"><use href="#download"/></svg></span><b>여름밤 풀벌레</b><span>자연 · 3.1MB</span></div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="on"><span class="pill"><svg class="ico"><use href="#home"/></svg></span>홈</div>
+    <div><span class="pill"><svg class="ico"><use href="#layers"/></svg></span>믹스</div>
+    <div><span class="pill"><svg class="ico"><use href="#routine"/></svg></span>루틴</div>
+    <div><span class="pill"><svg class="ico"><use href="#gear"/></svg></span>설정</div>
+  </div>
+</div></div>
+
+<!-- ===== 03 플레이어 ===== -->
+<div class="wrap"><div class="label">03. 플레이어<small>호흡하듯 천천히 커졌다 작아지는 ‘브리딩 오브’ 비주얼</small></div>
+<div class="phone" style="background:radial-gradient(100% 60% at 50% 30%,#2D3A75 0%,#141836 60%,#0E1126 100%)">
+  <div class="sb"><span>23:13</span><span class="r"><img src="../icons/ic_stat_playing.svg"><img src="../icons/ic_stat_timer.svg">5G 64%</span></div>
+  <div class="pad row between" style="margin-top:6px"><svg class="ico"><use href="#down"/></svg><span class="t-c">깊은 잠</span><svg class="ico"><use href="#heart"/></svg></div>
+  <div style="position:relative;height:300px;display:flex;align-items:center;justify-content:center;margin-top:20px">
+    <div style="position:absolute;width:270px;height:270px;border-radius:50%;background:radial-gradient(circle,rgba(156,156,255,.10),rgba(156,156,255,0) 70%)"></div>
+    <div style="position:absolute;width:210px;height:210px;border-radius:50%;border:1px solid rgba(245,238,220,.12)"></div>
+    <div style="position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#5560A8,#2A3170);box-shadow:0 0 60px rgba(156,156,255,.35)"></div>
+    <svg class="ico" style="position:relative;width:56px;height:56px;stroke:var(--moon);stroke-width:1.4"><use href="#rain"/></svg>
+  </div>
+  <div style="text-align:center">
+    <div class="t-h1">잔잔한 빗소리</div>
+    <div class="t-b">+ 벽난로 · 2개 레이어</div>
+  </div>
+  <div style="display:flex;justify-content:center;margin-top:16px">
+    <span class="chip" style="background:rgba(245,238,220,.12);color:var(--moon)"><svg class="ico" style="width:16px;height:16px"><use href="#timer"/></svg>42:18 후 꺼짐 · 페이드아웃 1분</span>
+  </div>
+  <div class="row" style="justify-content:space-around;margin-top:28px;padding:0 36px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px" class="t-c"><div style="width:52px;height:52px;border-radius:26px;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--text)"><svg class="ico"><use href="#timer"/></svg></div>타이머</div>
+    <div style="width:80px;height:80px;border-radius:40px;background:var(--moon);color:#1B1F3B;display:flex;align-items:center;justify-content:center"><svg class="ico" style="width:32px;height:32px;stroke-width:2.6"><use href="#pause"/></svg></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px" class="t-c"><div style="width:52px;height:52px;border-radius:26px;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--text)"><svg class="ico"><use href="#layers"/></svg></div>믹스</div>
+  </div>
+  <div class="pad row gap12" style="margin-top:30px;padding:0 32px"><svg class="ico" style="color:var(--text2)"><use href="#vol"/></svg><div class="slider" style="flex:1"><i style="width:58%"></i><b style="left:calc(58% - 10px)"></b></div></div>
+</div></div>
+
+<!-- ===== 04 타이머 — 시간 후 ===== -->
+<div class="wrap"><div class="label">04. 자동 꺼짐 · 몇 시간 후<small>프리셋 + 직접 입력 · 끄기 전 페이드아웃</small></div>
+<div class="phone" style="background:radial-gradient(100% 60% at 50% 30%,#2D3A75 0%,#141836 60%,#0E1126 100%)">
+  <div class="sb"><span>23:13</span><span class="r">5G 64%</span></div>
+  <div style="display:flex;justify-content:center;margin-top:90px"><div style="width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#5560A8,#2A3170)"></div></div>
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="t-h2">자동 꺼짐</div>
+    <div class="seg" style="margin-top:16px"><div class="on">시간 후 끄기</div><div>종료 시각 지정</div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+      <span class="chip">15분</span><span class="chip">30분</span><span class="chip">45분</span><span class="chip on">1시간</span>
+      <span class="chip">1.5시간</span><span class="chip">2시간</span><span class="chip">4시간</span><span class="chip">8시간</span>
+      <span class="chip" style="border:1px dashed #5A6090;background:none"><svg class="ico" style="width:14px;height:14px"><use href="#plus"/></svg>직접 입력</span>
+      <span class="chip" style="background:none;border:1px solid var(--outline)">끄지 않음 ∞</span>
+    </div>
+    <div class="card" style="margin-top:18px;background:var(--surface2);text-align:center;padding:14px">
+      <span class="t-c">종료 예정</span><div style="font-size:28px;font-weight:700;margin-top:2px;color:var(--moon)">오전 12:13</div>
+    </div>
+    <div style="margin-top:18px"><div class="row between"><b style="font-size:14px">끄기 전 서서히 줄이기</b><div class="toggle"></div></div>
+      <div class="row gap8" style="margin-top:10px"><span class="chip">30초</span><span class="chip on">1분</span><span class="chip">3분</span><span class="chip">5분</span></div>
+    </div>
+    <div class="btn primary" style="margin-top:22px">타이머 시작</div>
+  </div>
+</div></div>
+
+<!-- ===== 05 타이머 — 종료 시각 ===== -->
+<div class="wrap"><div class="label">05. 자동 꺼짐 · 종료 시각 지정<small>휠 피커 · 자정 넘김 자동 처리 · ‘내일’ 표시</small></div>
+<div class="phone" style="background:radial-gradient(100% 60% at 50% 30%,#2D3A75 0%,#141836 60%,#0E1126 100%)">
+  <div class="sb"><span>23:13</span><span class="r">5G 64%</span></div>
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="t-h2">자동 꺼짐</div>
+    <div class="seg" style="margin-top:16px"><div>시간 후 끄기</div><div class="on">종료 시각 지정</div></div>
+    <div style="position:relative;height:220px;margin-top:16px;display:flex;justify-content:center;gap:26px;align-items:center;font-size:22px;color:var(--text3)">
+      <div style="position:absolute;left:0;right:0;top:86px;height:48px;border-radius:14px;background:var(--surface2)"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;text-align:center"><span style="opacity:.4">오후</span><span style="color:var(--text);font-weight:700;font-size:26px">오전</span><span style="opacity:.4">&nbsp;</span></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;text-align:center"><span style="opacity:.3">12</span><span>01</span><span style="color:var(--text);font-weight:700;font-size:30px">02</span><span>03</span><span style="opacity:.3">04</span></div>
+      <div style="position:relative;font-size:28px;color:var(--text)">:</div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;text-align:center"><span style="opacity:.3">20</span><span>25</span><span style="color:var(--text);font-weight:700;font-size:30px">30</span><span>35</span><span style="opacity:.3">40</span></div>
+    </div>
+    <div class="t-b" style="text-align:center;margin-top:6px"><b style="color:var(--moon)">내일 오전 2:30</b>에 꺼져요 · 약 3시간 17분 후</div>
+    <div class="row gap8" style="margin-top:16px;justify-content:center"><span class="chip">00:00</span><span class="chip">01:00</span><span class="chip on">02:30</span><span class="chip">06:30 기상</span></div>
+    <div class="row between" style="margin-top:20px"><b style="font-size:14px">끄기 전 서서히 줄이기</b><span class="t-c">1분 ›</span></div>
+    <div class="btn primary" style="margin-top:22px">오전 2:30에 끄기</div>
+  </div>
+</div></div>
+
+<!-- ===== 06 믹서 ===== -->
+<div class="wrap"><div class="label">06. 사운드 믹서 (추천 기능)<small>최대 4개 레이어 동시 재생 · 개별 볼륨 · 믹스 저장</small></div>
+<div class="phone">
+  <div class="sb"><span>23:15</span><span class="r"><img src="../icons/ic_stat_playing.svg">5G 64%</span></div>
+  <div class="pad row between" style="margin-top:6px"><svg class="ico"><use href="#back"/></svg><b>나만의 믹스</b><span class="t-c" style="color:var(--moon)">저장</span></div>
+  <div class="pad" style="margin-top:18px">
+    <div class="card" style="background:linear-gradient(135deg,#2E3A6B,#3B2B52);padding:18px">
+      <div class="t-c">믹스 이름</div><div style="font-size:20px;font-weight:700;margin-top:4px">비 오는 오두막 ✎</div>
+      <div class="row gap8" style="margin-top:10px"><span class="dot" style="background:var(--sleep)"></span><span class="t-c">깊은 잠 · 3 / 4 레이어</span></div>
+    </div>
+  </div>
+  <div class="pad" style="margin-top:18px;display:flex;flex-direction:column;gap:12px">
+    <div class="card row gap12"><div class="tile g-rain" style="width:48px;height:48px;border-radius:14px;padding:0"><svg class="ico" style="top:11px;left:11px;width:26px;height:26px"><use href="#rain"/></svg></div>
+      <div style="flex:1"><div class="row between"><b style="font-size:14px">잔잔한 빗소리</b><span class="t-c">70%</span></div><div class="slider" style="margin-top:12px"><i style="width:70%"></i><b style="left:calc(70% - 10px)"></b></div></div></div>
+    <div class="card row gap12"><div class="tile g-fire" style="width:48px;height:48px;border-radius:14px;padding:0"><svg class="ico" style="top:11px;left:11px;width:26px;height:26px"><use href="#fire"/></svg></div>
+      <div style="flex:1"><div class="row between"><b style="font-size:14px">벽난로</b><span class="t-c">45%</span></div><div class="slider" style="margin-top:12px"><i style="width:45%"></i><b style="left:calc(45% - 10px)"></b></div></div></div>
+    <div class="card row gap12"><div class="tile g-brown" style="width:48px;height:48px;border-radius:14px;padding:0"><svg class="ico" style="top:11px;left:11px;width:26px;height:26px"><use href="#noise"/></svg></div>
+      <div style="flex:1"><div class="row between"><b style="font-size:14px">브라운 노이즈</b><span class="t-c">30%</span></div><div class="slider" style="margin-top:12px"><i style="width:30%"></i><b style="left:calc(30% - 10px)"></b></div></div></div>
+    <div class="card row gap12" style="background:none;border:1px dashed #3E4575;justify-content:center;color:var(--text2);font-size:14px;height:64px"><svg class="ico"><use href="#plus"/></svg>소리 더하기</div>
+  </div>
+  <div class="pad" style="margin-top:18px"><div class="t-c" style="margin-bottom:10px">추천 조합</div>
+    <div class="row gap8" style="flex-wrap:wrap"><span class="chip">+ 바람 소리</span><span class="chip">+ 풀벌레</span><span class="chip">+ 파도</span></div></div>
+  <div class="pad" style="position:absolute;bottom:28px;left:0;right:0"><div class="btn primary"><svg class="ico" style="width:20px;height:20px;margin-right:6px"><use href="#play"/></svg>믹스 재생</div></div>
+</div></div>
+
+<!-- ===== 07 집중 / 공부 · 포모도로 ===== -->
+<div class="wrap"><div class="label">07. 공부 · 포모도로 모드 (추천 기능)<small>25분 집중 / 5분 휴식 · 휴식 시 사운드 자동 전환</small></div>
+<div class="phone" style="background:radial-gradient(100% 60% at 50% 25%,#1F4A3E 0%,#11202A 60%,#0E1126 100%)">
+  <div class="sb"><span>14:20</span><span class="r"><img src="../icons/ic_stat_playing.svg">5G 91%</span></div>
+  <div class="pad row between" style="margin-top:6px"><svg class="ico"><use href="#down"/></svg><span class="t-c"><span class="dot" style="background:var(--study)"></span> 공부</span><svg class="ico"><use href="#gear"/></svg></div>
+  <div style="position:relative;height:300px;display:flex;align-items:center;justify-content:center;margin-top:24px">
+    <svg width="250" height="250" viewBox="0 0 250 250" style="position:absolute"><circle cx="125" cy="125" r="110" stroke="#22323A" stroke-width="10" fill="none"/><circle cx="125" cy="125" r="110" stroke="#A8D672" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="691" stroke-dashoffset="250" transform="rotate(-90 125 125)"/></svg>
+    <div style="text-align:center;position:relative"><div class="t-c">집중 2 / 4</div><div style="font-size:52px;font-weight:700;letter-spacing:1px">16:04</div><div class="t-c">다음: 5분 휴식 · 새소리</div></div>
+  </div>
+  <div style="text-align:center"><div class="t-h2">도서관 앰비언스</div><div class="t-b">+ 알파파 10Hz</div></div>
+  <div class="row gap8" style="justify-content:center;margin-top:18px"><span class="chip on" style="background:var(--study)">25 / 5</span><span class="chip">50 / 10</span><span class="chip">90 / 20</span></div>
+  <div class="row" style="justify-content:center;gap:28px;margin-top:28px">
+    <div style="width:52px;height:52px;border-radius:26px;background:var(--surface2);display:flex;align-items:center;justify-content:center"><svg class="ico"><use href="#stop"/></svg></div>
+    <div style="width:80px;height:80px;border-radius:40px;background:var(--study);color:#13241B;display:flex;align-items:center;justify-content:center"><svg class="ico" style="width:32px;height:32px;stroke-width:2.6"><use href="#pause"/></svg></div>
+    <div style="width:52px;height:52px;border-radius:26px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">+5분</div>
+  </div>
+  <div class="pad" style="margin-top:26px"><div class="card row between" style="padding:12px 16px"><span class="t-c">오늘 집중 시간</span><b style="color:var(--study)">1시간 34분 · 🔥 5일 연속</b></div></div>
+</div></div>
+
+<!-- ===== 08 잠금화면 · 백그라운드 알림 ===== -->
+<div class="wrap"><div class="label">08. 백그라운드 재생 · 잠금화면 알림<small>상태바 아이콘 + 미디어 알림 (+15분 연장 액션)</small></div>
+<div class="phone" style="background:linear-gradient(180deg,#151A3A 0%,#2A2448 55%,#3F2E4A 100%)">
+  <div class="sb"><span class="row gap8">23:58 <img src="../icons/ic_stat_playing.svg"><img src="../icons/ic_stat_timer.svg"></span><span class="r">5G 61%</span></div>
+  <div style="text-align:center;margin-top:50px"><div class="t-c" style="font-size:14px">11월 3일 화요일</div><div style="font-size:84px;font-weight:300;line-height:1.1;margin-top:4px">23:58</div></div>
+  <div class="pad" style="margin-top:40px">
+    <div style="border-radius:26px;background:rgba(30,34,70,.85);padding:16px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06)">
+      <div class="row gap8 t-c"><img src="../icons/ic_stat_playing.svg" width="14" style="opacity:.85"><span>쉼 · 15분 후 꺼짐</span></div>
+      <div class="row gap12" style="margin-top:12px">
+        <img src="../icons/app_icon.svg" width="56" style="border-radius:14px">
+        <div style="flex:1"><b style="font-size:16px">잔잔한 빗소리 + 벽난로</b><div class="t-c" style="margin-top:3px">깊은 잠 · 나만의 믹스</div></div>
+      </div>
+      <div class="slider" style="margin:16px 0 4px;height:4px"><i style="width:75%"></i></div>
+      <div class="row between t-c"><span>45:00 경과</span><span>-15:00</span></div>
+      <div class="row" style="justify-content:space-around;margin-top:12px">
+        <div style="font-size:12px;font-weight:700;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:22px;background:rgba(255,255,255,.08)">+15</div>
+        <div style="width:54px;height:54px;border-radius:27px;background:var(--moon);color:#1B1F3B;display:flex;align-items:center;justify-content:center"><svg class="ico" style="width:24px;height:24px;stroke-width:2.6"><use href="#pause"/></svg></div>
+        <div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:22px;background:rgba(255,255,255,.08)"><svg class="ico" style="width:18px;height:18px"><use href="#stop"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center" class="t-c">위로 스와이프하여 잠금 해제</div>
+</div></div>
+
+<!-- ===== 09 수면 화면 ===== -->
+<div class="wrap"><div class="label">09. 수면 화면 · OLED 블랙 (추천 기능)<small>최저 밝기 · 번인 방지 위치 이동 · 탭하면 해제</small></div>
+<div class="phone" style="background:#000">
+  <div style="position:absolute;top:250px;left:0;right:0;text-align:center;color:#5C5F7A">
+    <svg class="ico" style="width:28px;height:28px;stroke:#4A4D6A"><use href="#moon"/></svg>
+    <div style="font-size:64px;font-weight:200;margin-top:8px;color:#6C6F8C">01:12</div>
+    <div style="font-size:13px;margin-top:10px;color:#4A4D66">잔잔한 빗소리 · 38분 후 꺼짐</div>
+    <div style="display:flex;justify-content:center;gap:4px;margin-top:22px;align-items:flex-end;height:18px">
+      <i style="width:3px;height:6px;background:#3A3D58;border-radius:2px"></i><i style="width:3px;height:12px;background:#3A3D58;border-radius:2px"></i><i style="width:3px;height:18px;background:#3A3D58;border-radius:2px"></i><i style="width:3px;height:10px;background:#3A3D58;border-radius:2px"></i><i style="width:3px;height:14px;background:#3A3D58;border-radius:2px"></i><i style="width:3px;height:7px;background:#3A3D58;border-radius:2px"></i>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:12px;color:#33354A">화면을 두 번 탭하면 돌아가요</div>
+</div></div>
+
+</div>
+</body></html>

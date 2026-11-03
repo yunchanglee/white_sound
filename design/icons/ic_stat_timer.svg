@@ -1,0 +1,9 @@
+<!-- 상태바 알림 아이콘 (자동 꺼짐 타이머 동작 중) - 24x24, 흰색 단색 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96">
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="8.5" r="6"/>
+    <path d="M12,5.6 V8.5 L14.2,9.9"/>
+    <path d="M4,17.5 q2,-1.7 4,0 t4,0 t4,0 t4,0"/>
+    <path d="M8,21.3 q2,-1.7 4,0 t4,0"/>
+  </g>
+</svg>
