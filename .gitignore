@@ -14,3 +14,7 @@
 
 # Temporary test screenshots
 design/device_*.png
+
+# Keystores
+*.jks
+*.keystore
